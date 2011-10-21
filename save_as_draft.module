@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Draft management options
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+
+function save_as_draft_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  switch ($form_id) {
+    case ('_node_form' == drupal_substr($form_id, -10)):
+      $form['actions']['save_as_draft'] = array(
+        '#type' => 'submit',
+        '#value' => t('Save as Draft'),
+        '#weight' => 12,
+        '#submit' => array('save_as_draft'),
+      );
+    
+    }
+}
+
+function save_as_draft($form, &$form_state) {
+    $form_state['values']['status'] = 0;
+    $form_state['values']['promote'] = 0;
+    node_form_submit($form, $form_state);
+}

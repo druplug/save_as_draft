@@ -1,0 +1,7 @@
+name = Save as Draft
+description = Add a "Save as Draft" button for blogs, general drafts management
+core = 7.x
+version = 7.x-1.0
+files[] = save_as_draft.module
+files[] = save_as_draft.install
+
